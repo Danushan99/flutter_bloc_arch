@@ -13,6 +13,6 @@ class HomeLoadedErrorState extends HomeState {}
 
 class HomeLoadingState extends HomeState {}
 
-// class HomeNavigateToWishListActionPage extends HomeActionState {}
+class HomeNavigateToWishListActionState extends HomeActionState {}
 
-// class HomeNavigateToCArdActionPage extends HomeActionState {}
+class HomeNavigateToCardActionState extends HomeActionState {}

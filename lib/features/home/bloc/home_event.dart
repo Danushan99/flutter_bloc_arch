@@ -9,4 +9,4 @@ class HomeProductCardButtonOnclickedEvent extends HomeEvent {}
 
 class HomeNavigateToWishButtonNavigationEvent extends HomeEvent {}
 
-class HomeNavigateT0CardButtonNavigationEvent extends HomeEvent {}
+class HomeNavigateToCardButtonNavigationEvent extends HomeEvent {}
