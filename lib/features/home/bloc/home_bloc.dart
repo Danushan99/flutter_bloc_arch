@@ -8,33 +8,28 @@ part 'home_state.dart';
 
 class HomeBloc extends Bloc<HomeEvent, HomeState> {
   HomeBloc() : super(HomeInitial()) {
-    on<HomeProductWishlitButtonclickedEvent>(
-        homeProductWishlitButtonclickedEvent);
-    on<HomeProductCardButtonOnclickedEvent>(
-        homeProductCardButtonOnclickedEvent);
-    on<HomeNavigateToWishButtonNavigationEvent>(
-        homeNavigateToWishButtonNavigationEvent);
-    on<HomeNavigateToCardButtonNavigationEvent>(
-        homeNavigateToCardButtonNavigationEvent);
+    on<HomeProductWishlistButtonClickEvent>(
+        homeProductWishlistButtonClickEvent);
+    on<HomeProductCardButtonClickedEvent>(homeProductCardButtonClickedEvent);
+    on<HomeWishlistButtonNavigationEvent>(homeWishButtonNavigationEvent);
+    on<HomeCardButtonNavigationEvent>(homeCardButtonNavigationEvent);
   }
 
-  FutureOr<void> homeProductWishlitButtonclickedEvent(
-      HomeProductWishlitButtonclickedEvent event, Emitter<HomeState> emit) {
-    print("whish list clcked da fucker");
+  FutureOr<void> homeProductWishlistButtonClickEvent(
+      HomeProductWishlistButtonClickEvent event, Emitter<HomeState> emit) {}
+
+  FutureOr<void> homeProductCardButtonClickedEvent(
+      HomeProductCardButtonClickedEvent event, Emitter<HomeState> emit) {}
+
+  FutureOr<void> homeWishButtonNavigationEvent(
+      HomeWishlistButtonNavigationEvent event, Emitter<HomeState> emit) {
+    print("whishlist");
+    emit(HomeNavigateToWishlistPageActionState());
   }
 
-  FutureOr<void> homeProductCardButtonOnclickedEvent(
-      HomeProductCardButtonOnclickedEvent event, Emitter<HomeState> emit) {
-    print("card clicked");
-  }
-
-  FutureOr<void> homeNavigateToWishButtonNavigationEvent(
-      HomeNavigateToWishButtonNavigationEvent event, Emitter<HomeState> emit) {
-    emit(HomeNavigateToWishListActionState());
-  }
-
-  FutureOr<void> homeNavigateToCardButtonNavigationEvent(
-      HomeNavigateToCardButtonNavigationEvent event, Emitter<HomeState> emit) {
-    emit(HomeNavigateToCardActionState());
+  FutureOr<void> homeCardButtonNavigationEvent(
+      HomeCardButtonNavigationEvent event, Emitter<HomeState> emit) {
+    print("card button pressed");
+    emit(HomeNavigateToCartPageActionState());
   }
 }
