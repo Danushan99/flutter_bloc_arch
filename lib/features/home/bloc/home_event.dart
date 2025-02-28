@@ -5,5 +5,4 @@ sealed class HomeEvent {}
 
 class HomeProductWishlitButtonOnclick extends HomeEvent{
 
-  
 }
