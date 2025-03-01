@@ -1,5 +1,6 @@
 import 'package:blco_learning/features/cart/card.dart';
 import 'package:blco_learning/features/home/bloc/home_bloc.dart';
+import 'package:blco_learning/features/home/ui/product_tile_widget.dart';
 import 'package:blco_learning/features/wishlist/wish_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -46,6 +47,7 @@ class _HomeState extends State<Home> {
             );
             break;
           case HomeLoadedSucessState:
+            final successState = state as HomeLoadedSucessState;
             return Scaffold(
               appBar: AppBar(
                 backgroundColor: Colors.blueGrey[200],
@@ -65,6 +67,12 @@ class _HomeState extends State<Home> {
                   ),
                 ],
               ),
+              body: ListView.builder(
+                  itemCount: successState.products.length,
+                  itemBuilder: (context, index) {
+                    return ProductTileWidget(
+                        productDataModel: successState.products[index]);
+                  }),
             );
             break;
 

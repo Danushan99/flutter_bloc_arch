@@ -1,3 +1,5 @@
+// ignore_for_file: depend_on_referenced_packages
+
 import 'dart:async';
 
 import 'package:blco_learning/data/grocery_data.dart';
@@ -31,7 +33,8 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
                   id: e['id'],
                   name: e['name'],
                   price: e['price'],
-                  imageUrl: e['imageUrl']),
+                  imageUrl: e['imageUrl'],
+                  description: e['description']),
             )
             .toList(),
       ),
