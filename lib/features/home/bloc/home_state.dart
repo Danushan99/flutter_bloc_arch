@@ -7,12 +7,23 @@ abstract class HomeActionState extends HomeState {}
 
 final class HomeInitial extends HomeState {}
 
-class HomeLoadedSucessState extends HomeState {}
+class HomeLoadedSucessState extends HomeState {
+  //  create list
+
+  final List<ProductDataModel> products;
+
+  HomeLoadedSucessState({required this.products});
+}
 
 class HomeLoadedErrorState extends HomeState {}
 
 class HomeLoadingState extends HomeState {}
 
-class HomeNavigateToWishListActionPage extends HomeActionState {}
+class HomeNavigateToWishlistPageActionState extends HomeActionState {}
 
-class HomeNavigateToCArdActionPage extends HomeActionState {}
+class HomeNavigateToCartPageActionState extends HomeActionState {}
+
+class ProductWishlistedActionState extends HomeActionState {}
+
+class ProductAddedIntoCardActionState extends HomeActionState {}
+
