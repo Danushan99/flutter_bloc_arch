@@ -1,13 +1,13 @@
-import 'package:blco_learning/features/cart/bloc/cart_bloc.dart';
+import 'package:blco_learning/features/wishlist/bloc/wishlist_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:blco_learning/features/home/models/product_data_model.dart';
 
-class CartTileWidget extends StatelessWidget {
-  final CartBloc cartBloc;
+class WishlistTileWidget extends StatelessWidget {
+  final WishlistBloc wishlistBloc;
   final ProductDataModel productDataModel;
 
-  const CartTileWidget(
-      {super.key, required this.productDataModel, required this.cartBloc});
+  const WishlistTileWidget(
+      {super.key, required this.productDataModel, required this.wishlistBloc});
 
   @override
   Widget build(BuildContext context) {
@@ -18,12 +18,12 @@ class CartTileWidget extends StatelessWidget {
         color: Colors.white,
         borderRadius: BorderRadius.circular(20),
         border: Border.all(color: Colors.grey.shade300, width: 1),
-        boxShadow: [
+        boxShadow: const [
           BoxShadow(
             color: Colors.black12,
             blurRadius: 6,
             spreadRadius: 1,
-            offset: const Offset(0, 3),
+            offset: Offset(0, 3),
           ),
         ],
       ),
@@ -83,10 +83,10 @@ class CartTileWidget extends StatelessWidget {
               ),
               IconButton(
                 onPressed: () {
-                  cartBloc.add(
-                    CartRemoveFromCartlistEvent(
-                        productDataModel: productDataModel),
-                  );
+                  // cartBloc.add(
+                  //   CartRemoveFromCartlistEvent(
+                  //       productDataModel: productDataModel),
+                  //);
                 },
                 icon: const Icon(
                   Icons.delete,

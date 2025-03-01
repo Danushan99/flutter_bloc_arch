@@ -13,3 +13,7 @@ class CartSuccessState extends CartState {
     required this.cartItems,
   });
 }
+
+class CartRemoveActionState extends CartActionState {
+  
+}

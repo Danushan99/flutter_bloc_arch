@@ -26,3 +26,4 @@ class HomeNavigateToCartPageActionState extends HomeActionState {}
 class ProductWishlistedActionState extends HomeActionState {}
 
 class ProductAddedIntoCardActionState extends HomeActionState {}
+
