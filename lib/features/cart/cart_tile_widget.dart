@@ -1,13 +1,13 @@
-import 'package:blco_learning/features/home/bloc/home_bloc.dart';
+import 'package:blco_learning/features/cart/bloc/cart_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:blco_learning/features/home/models/product_data_model.dart';
 
-class ProductTileWidget extends StatelessWidget {
-  final HomeBloc homeBloc;
+class CartTileWidget extends StatelessWidget {
+  final CartBloc cartBloc;
   final ProductDataModel productDataModel;
 
-  const ProductTileWidget(
-      {super.key, required this.productDataModel, required this.homeBloc});
+  const CartTileWidget(
+      {super.key, required this.productDataModel, required this.cartBloc});
 
   @override
   Widget build(BuildContext context) {
@@ -69,15 +69,15 @@ class ProductTileWidget extends StatelessWidget {
                 children: [
                   IconButton(
                     onPressed: () {
-                      homeBloc.add(HomeProductWishlistButtonClickEvent(
-                          clickedProducts: productDataModel));
+                      // homeBloc.add(HomeProductWishlistButtonClickEvent(
+                      //     clickedProducts: productDataModel));
                     },
                     icon: const Icon(Icons.favorite),
                   ),
                   IconButton(
                     onPressed: () {
-                      homeBloc.add(HomeProductCardButtonClickedEvent(
-                          clickedProducts: productDataModel));
+                      // homeBloc.add(HomeProductCardButtonClickedEvent(
+                      //     clickedProducts: productDataModel));
                     },
                     icon: const Icon(Icons.shopping_bag),
                   )

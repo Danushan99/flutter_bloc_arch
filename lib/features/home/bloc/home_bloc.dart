@@ -2,6 +2,7 @@
 
 import 'dart:async';
 
+import 'package:blco_learning/data/cart_item.dart';
 import 'package:blco_learning/data/grocery_data.dart';
 import 'package:blco_learning/data/wishlist_items.dart';
 import 'package:blco_learning/features/home/models/product_data_model.dart';
@@ -41,6 +42,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
       ),
     );
   }
+// button functions
 
   FutureOr<void> homeProductWishlistButtonClickEvent(
       HomeProductWishlistButtonClickEvent event, Emitter<HomeState> emit) {
@@ -51,9 +53,11 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
 
   FutureOr<void> homeProductCardButtonClickedEvent(
       HomeProductCardButtonClickedEvent event, Emitter<HomeState> emit) {
+    cartItems.add(event.clickedProducts);
     emit(ProductAddedIntoCardActionState());
   }
 
+//navigation
   FutureOr<void> homeWishButtonNavigationEvent(
       HomeWishlistButtonNavigationEvent event, Emitter<HomeState> emit) {
     print("whishlist");
