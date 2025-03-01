@@ -12,6 +12,12 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  @override
+  void initState() {
+    homeBloc.add(HomeInitialEvent());
+    super.initState();
+  }
+
   final HomeBloc homeBloc = HomeBloc();
   @override
   Widget build(BuildContext context) {
@@ -29,26 +35,50 @@ class _HomeState extends State<Home> {
       listenWhen: (previous, current) => current is HomeActionState,
       buildWhen: (previous, current) => current is! HomeActionState,
       builder: (context, state) {
-        return Scaffold(
-          appBar: AppBar(
-            backgroundColor: Colors.blueGrey[200],
-            title: const Text("shop app"),
-            actions: [
-              IconButton(
-                onPressed: () {
-                  homeBloc.add(HomeWishlistButtonNavigationEvent());
-                },
-                icon: const Icon(Icons.favorite),
+        switch (state.runtimeType) {
+          case HomeLoadingState:
+            return Scaffold(
+              body: Center(
+                child: CircularProgressIndicator(
+                  color: Colors.orangeAccent,
+                ),
               ),
-              IconButton(
-                onPressed: () {
-                  homeBloc.add(HomeCardButtonNavigationEvent());
-                },
-                icon: const Icon(Icons.shopping_bag),
+            );
+            break;
+          case HomeLoadedSucessState:
+            return Scaffold(
+              appBar: AppBar(
+                backgroundColor: Colors.blueGrey[200],
+                title: const Text("shop app"),
+                actions: [
+                  IconButton(
+                    onPressed: () {
+                      homeBloc.add(HomeWishlistButtonNavigationEvent());
+                    },
+                    icon: const Icon(Icons.favorite),
+                  ),
+                  IconButton(
+                    onPressed: () {
+                      homeBloc.add(HomeCardButtonNavigationEvent());
+                    },
+                    icon: const Icon(Icons.shopping_bag),
+                  ),
+                ],
               ),
-            ],
-          ),
-        );
+            );
+            break;
+
+          case HomeLoadedErrorState:
+            return Scaffold(
+              body: Center(
+                child: Text("Load Faild"),
+              ),
+            );
+          default:
+            return SizedBox(
+              child: Text("kinda error oi "),
+            );
+        }
       },
     );
   }

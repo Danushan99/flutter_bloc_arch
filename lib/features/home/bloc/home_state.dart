@@ -8,6 +8,8 @@ abstract class HomeActionState extends HomeState {}
 final class HomeInitial extends HomeState {}
 
 class HomeLoadedSucessState extends HomeState {
+  //  create list
+
   final List<ProductDataModel> products;
 
   HomeLoadedSucessState({required this.products});
