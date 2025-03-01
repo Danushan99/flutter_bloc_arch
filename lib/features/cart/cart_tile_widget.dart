@@ -13,78 +13,88 @@ class CartTileWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.all(10),
-      padding: const EdgeInsets.all(10),
+      padding: const EdgeInsets.all(12),
       decoration: BoxDecoration(
-        color: Colors.blueGrey[50],
-        borderRadius: BorderRadius.circular(15),
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(20),
+        border: Border.all(color: Colors.grey.shade300, width: 1),
         boxShadow: [
           BoxShadow(
-            color: Colors.grey.withOpacity(0.3),
-            blurRadius: 8,
-            spreadRadius: 2,
-            offset: const Offset(0, 4),
+            color: Colors.black12,
+            blurRadius: 6,
+            spreadRadius: 1,
+            offset: const Offset(0, 3),
           ),
         ],
       ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           ClipRRect(
-            borderRadius: BorderRadius.circular(12),
+            borderRadius: BorderRadius.circular(15),
             child: Image.network(
               productDataModel.imageUrl,
-              height: 200,
-              width: double.infinity,
+              height: 80,
+              width: 80,
               fit: BoxFit.cover,
             ),
           ),
-          const SizedBox(height: 10),
-          Text(
-            productDataModel.name,
-            style: const TextStyle(
-              fontSize: 19,
-              fontWeight: FontWeight.bold,
+          const SizedBox(width: 12),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  productDataModel.name,
+                  style: const TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+                const SizedBox(height: 5),
+                Text(
+                  productDataModel.description,
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
+                  style: const TextStyle(
+                    fontSize: 14,
+                    color: Colors.grey,
+                  ),
+                ),
+                const SizedBox(height: 10),
+                Text(
+                  'RS ${productDataModel.price.toString()}',
+                  style: const TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.green,
+                  ),
+                ),
+              ],
             ),
           ),
-          const SizedBox(height: 5),
-          Text(
-            productDataModel.description,
-            style: const TextStyle(
-              fontSize: 15,
-              color: Colors.black54,
-            ),
-          ),
-          const SizedBox(height: 15),
           Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(
-                ' RS ' + productDataModel.price.toString(),
-                style: const TextStyle(
-                  fontSize: 15,
-                  color: Colors.black,
+              IconButton(
+                onPressed: () {},
+                icon: const Icon(
+                  Icons.favorite,
                 ),
               ),
-              Row(
-                children: [
-                  IconButton(
-                    onPressed: () {
-                      // homeBloc.add(HomeProductWishlistButtonClickEvent(
-                      //     clickedProducts: productDataModel));
-                    },
-                    icon: const Icon(Icons.favorite),
-                  ),
-                  IconButton(
-                    onPressed: () {
-                      // homeBloc.add(HomeProductCardButtonClickedEvent(
-                      //     clickedProducts: productDataModel));
-                    },
-                    icon: const Icon(Icons.shopping_bag),
-                  )
-                ],
+              IconButton(
+                onPressed: () {
+                  cartBloc.add(
+                    CartRemoveFronCartlistEvent(
+                        productDataModel: productDataModel),
+                  );
+                },
+                icon: const Icon(
+                  Icons.delete,
+                  color: Colors.redAccent,
+                ),
               ),
             ],
-          )
+          ),
         ],
       ),
     );
