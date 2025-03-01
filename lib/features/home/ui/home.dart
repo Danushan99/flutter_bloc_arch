@@ -45,13 +45,14 @@ class _HomeState extends State<Home> {
                 ),
               ),
             );
-            break;
+
           case HomeLoadedSucessState:
             final successState = state as HomeLoadedSucessState;
             return Scaffold(
+              backgroundColor: Colors.white,
               appBar: AppBar(
                 backgroundColor: Colors.blueGrey[200],
-                title: const Text("shop app"),
+                title: const Text("Grocery App"),
                 actions: [
                   IconButton(
                     onPressed: () {
@@ -71,10 +72,10 @@ class _HomeState extends State<Home> {
                   itemCount: successState.products.length,
                   itemBuilder: (context, index) {
                     return ProductTileWidget(
+                        homeBloc: homeBloc,
                         productDataModel: successState.products[index]);
                   }),
             );
-            break;
 
           case HomeLoadedErrorState:
             return Scaffold(

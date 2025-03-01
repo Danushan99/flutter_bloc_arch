@@ -3,6 +3,7 @@
 import 'dart:async';
 
 import 'package:blco_learning/data/grocery_data.dart';
+import 'package:blco_learning/data/wishlist_items.dart';
 import 'package:blco_learning/features/home/models/product_data_model.dart';
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
@@ -42,10 +43,16 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
   }
 
   FutureOr<void> homeProductWishlistButtonClickEvent(
-      HomeProductWishlistButtonClickEvent event, Emitter<HomeState> emit) {}
+      HomeProductWishlistButtonClickEvent event, Emitter<HomeState> emit) {
+    print("prodect added to whishlist");
+    wishlistItems.add(event.clickedProducts);
+    emit(ProductWishlistedActionState());
+  }
 
   FutureOr<void> homeProductCardButtonClickedEvent(
-      HomeProductCardButtonClickedEvent event, Emitter<HomeState> emit) {}
+      HomeProductCardButtonClickedEvent event, Emitter<HomeState> emit) {
+    emit(ProductAddedIntoCardActionState());
+  }
 
   FutureOr<void> homeWishButtonNavigationEvent(
       HomeWishlistButtonNavigationEvent event, Emitter<HomeState> emit) {
