@@ -7,7 +7,11 @@ abstract class HomeActionState extends HomeState {}
 
 final class HomeInitial extends HomeState {}
 
-class HomeLoadedSucessState extends HomeState {}
+class HomeLoadedSucessState extends HomeState {
+  final List<ProductDataModel> products;
+
+  HomeLoadedSucessState({required this.products});
+}
 
 class HomeLoadedErrorState extends HomeState {}
 

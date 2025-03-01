@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:blco_learning/features/home/models/product_data_model.dart';
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
 

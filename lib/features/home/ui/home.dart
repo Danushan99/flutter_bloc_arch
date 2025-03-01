@@ -31,19 +31,20 @@ class _HomeState extends State<Home> {
       builder: (context, state) {
         return Scaffold(
           appBar: AppBar(
+            backgroundColor: Colors.blueGrey[200],
             title: const Text("shop app"),
             actions: [
               IconButton(
                 onPressed: () {
                   homeBloc.add(HomeWishlistButtonNavigationEvent());
                 },
-                icon: Icon(Icons.favorite),
+                icon: const Icon(Icons.favorite),
               ),
               IconButton(
                 onPressed: () {
                   homeBloc.add(HomeCardButtonNavigationEvent());
                 },
-                icon: Icon(Icons.shopping_bag),
+                icon: const Icon(Icons.shopping_bag),
               ),
             ],
           ),
