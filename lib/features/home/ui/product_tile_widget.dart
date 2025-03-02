@@ -70,7 +70,7 @@ class ProductTileWidget extends StatelessWidget {
                   IconButton(
                     onPressed: () {
                       homeBloc.add(HomeProductWishlistButtonClickEvent(
-                          clickedProducts: productDataModel));
+                          wishlistedProducts: productDataModel));
                     },
                     icon: const Icon(Icons.favorite),
                   ),

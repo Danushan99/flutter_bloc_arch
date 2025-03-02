@@ -1,11 +1,10 @@
-import 'package:blco_learning/features/cart/bloc/cart_bloc.dart';
 import 'package:blco_learning/features/wishlist/bloc/wishlist_bloc.dart';
 import 'package:blco_learning/features/wishlist/wishlist_tile_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class WishList extends StatefulWidget {
-  WishList({
+  const WishList({
     super.key,
   });
 
@@ -30,23 +29,20 @@ class _WishListState extends State<WishList> {
       body: BlocConsumer<WishlistBloc, WishlistState>(
         bloc: wishlistBloc,
         listener: (context, state) {
-          // if (State is CartRemoveActionState) {
-          //   ScaffoldMessenger.of(context)
-          //       .showSnackBar(const SnackBar(content: Text("product removed")));
-          // }
         },
-        listenWhen: (previous, current) => current is CartActionState,
-        buildWhen: (previous, current) => current is! CartActionState,
+        listenWhen: (previous, current) => current is WishlistActionState,
+        buildWhen: (previous, current) => current is! WishlistActionState,
         builder: (context, state) {
           switch (state.runtimeType) {
             case WishlistSuccessState():
-              final successState = state as WishlistSuccessState;
+              final successStateData = state as WishlistSuccessState;
               return ListView.builder(
-                  itemCount: successState.cartItems.length,
+                  itemCount: successStateData.wishlistItems.length,
                   itemBuilder: (context, index) {
                     return WishlistTileWidget(
                         wishlistBloc: wishlistBloc,
-                        productDataModel: successState.cartItems[index]);
+                        productDataModel:
+                            successStateData.wishlistItems[index]);
                   });
 
             default:

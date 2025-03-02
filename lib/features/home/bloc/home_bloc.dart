@@ -47,7 +47,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
   FutureOr<void> homeProductWishlistButtonClickEvent(
       HomeProductWishlistButtonClickEvent event, Emitter<HomeState> emit) {
     print("prodect added to whishlist");
-    wishlistItems.add(event.clickedProducts);
+    wishlistItems.add(event.wishlistedProducts);
     emit(ProductWishlistedActionState());
   }
 
